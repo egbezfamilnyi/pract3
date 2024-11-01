@@ -45,6 +45,7 @@ local students = [
   subject: "Конфигурационное управление",
 }
 ```
+<img width="1134" alt="Снимок экрана 2024-11-01 в 13 17 51" src="https://github.com/user-attachments/assets/11a1e291-a430-4527-b3d6-def15759a391">
 
 ## Задача 2. Реализовать на Dhall приведенный ниже пример в формате JSON. Использовать в реализации свойство программируемости и принцип DRY.
 ```
@@ -90,6 +91,7 @@ let students : List Student =
 
 in  { groups = groups, students = students, subject = "Конфигурационное управление" }
 ```
+<img width="1224" alt="Снимок экрана 2024-11-01 в 13 19 24" src="https://github.com/user-attachments/assets/efc5df52-8afc-4b2a-a8f2-c746f5600276">
 
 ## Задача 3. Язык нулей и единиц.
 ```
@@ -192,27 +194,10 @@ def generate_phrase(grammar, start):
 
 
 BNF = '''
-E = E | E
-E = E & E
-E = ~ E
-E = (E)
-E = x
-E = y
+E = "~" E | E "&" E | E "|" E | "(" E ")" | "x" | "y"
 '''
 
 for i in range(10):
     print(generate_phrase(parse_bnf(BNF), 'E'))
-
-def generate_random_logical_expressions(n):
-    expressions = set()
-    
-    while len(expressions) < n:
-        result = generate_expression(parse_bnf(BNF), 'E')
-        expressions.add(result)
-    
-    return expressions
-
-logical_expressions = generate_random_logical_expressions(10)
-for expr in logical_expressions:
-    print(expr)
 ```
+<img width="452" alt="Снимок экрана 2024-11-01 в 13 32 21" src="https://github.com/user-attachments/assets/e5207ad8-2702-4d82-89ce-e3dd9bbe859c">
